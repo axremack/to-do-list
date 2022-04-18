@@ -1,0 +1,27 @@
+.task {
+  display:inline-block;
+  width:100px;
+  height:100px;
+  margin:2px;
+  padding:2px;
+  font-size:12px; /* 12 pixels pour 300px  */
+  background: rgb(252,252,40);
+  background: linear-gradient(51deg, rgba(252,252,40,1) 0%, rgba(194,194,3,1) 17%, rgba(255,255,42,1) 100%);
+  overflow:scroll;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  height: 100vh;
+}
+
+.zone {
+  position: relative;
+  overflow-y: auto;
+  padding : 4px 4px 4px 4px;
+  background: rgb(52,52,59);
+  background: linear-gradient(51deg, rgba(52,52,59,1) 0%, rgba(87,87,97,1) 35%, rgba(150,159,161,1) 100%);
+}

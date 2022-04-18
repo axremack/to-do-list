@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+
+<form id="new_form" method="post" th:object="${task}" th:action="@{/tasks}" modelAttribute="task">
+    <input type="text" size="2" th:field="${task.content}">
+    <select name="category">
+        <option th:each="cat: ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+    </select>
+    </select>
+    <!-- <input type="date" size="2" th:field="${task.creationDate}"> -->
+    <input type="date" size="2" th:field="${task.endDate}">
+    <input name="add" type="submit" value="Ajouter">
+</form>
+
+
+</body>
+</html>

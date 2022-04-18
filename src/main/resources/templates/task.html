@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <div th:text="${task.content}"></div>
+    <p><a th:href="@{/tasks/{id}/edit(id=${task.id})}">Modifier cette tâche</a></p>
+    <p><a th:href="@{/tasks/{id}/delete(id=${task.id})}">Supprimer la tâche</a></p>
+    <p><a th:href="@{/tasks}">Retour</a></p>
+</body>
+
+</html>

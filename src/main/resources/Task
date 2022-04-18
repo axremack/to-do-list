@@ -1,0 +1,23 @@
+DROP TABLE categories IF EXISTS;
+CREATE TABLE categories (
+  category_id   IDENTITY    PRIMARY KEY,
+  name          VARCHAR(20) DEFAULT ''
+);
+INSERT INTO categories(name) values('todo');
+INSERT INTO categories(name) values('WIP');
+INSERT INTO categories(name) values('done');
+
+DROP TABLE notes IF EXISTS;
+
+CREATE TABLE notes (
+  note_id       IDENTITY PRIMARY KEY,
+  category      INTEGER NOT NULL,
+  content       VARCHAR(500) NOT NULL,
+  creation_date DATE DEFAULT TODAY(),
+  end_date      DATE DEFAULT NULL,
+  FOREIGN KEY(category) REFERENCES categories(category_id)
+);
+
+INSERT INTO notes (category, content) values(3, 'finir le tp 1');
+INSERT INTO notes (category, content) values(2, 'finir le tp 2');
+INSERT INTO notes (category, content) values(1, 'finir le tp 3');

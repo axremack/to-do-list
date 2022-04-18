@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 th:text="${title}"></h1>
+
+<p th:if="${tasks.isEmpty()}">Aucune tâche à afficher</p>
+
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+<div id="main" th:unless="${categories.isEmpty()}">
+    <div class="zone" th:each="cat: ${categories}">
+        <h2 th:text="${cat.name}"></h2>
+        <div class="task" th:each="task: ${tasks}" th:if="${task.category.name} == ${cat.name}">
+            <p><a th:href="@{/tasks/{id}(id=${task.id})}">Voir le détail</a></p>
+            <p th:text="${task.content}"></p>
+            <p th:text="${task.creationDate}"></p>
+            <p th:text="${task.endDate}"></p>
+        </div>
+    </div>
+</div>
+
+<!--
+<table id="main" th:unless="${categories.isEmpty()}">
+    <tr>
+        <th th:each="cat: ${categories}" th:text="${cat.name}"></th>
+    </tr>
+    <tr class="zone">
+        <tr class="task" th:each="task: ${tasks}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.category.name}"></td>
+            <td th:text="${task.content}"></td>
+            <td th:text="${task.creationDate}"></td>
+            <td th:text="${task.endDate}"></td>
+            <td><a th:href="@{/tasks/{id}(id=${task.id})}">Voir le détail</a></td>
+        </tr>
+    </tr>
+
+</table>
+-->
+
+
+<p><a th:href="@{/tasks/new}">Ajouter une tâche</a></p>
+
+</body>
+</html>
